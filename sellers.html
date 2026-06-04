@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sellers Wall - Nyanza Fruit</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("r.png");
+background-size:cover;
+background-attachment:fixed;
+color:white;
+}
+
+/* HEADER */
+.header{
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+margin:0 8px;
+padding:8px 12px;
+background:rgba(255,255,255,0.1);
+border-radius:8px;
+transition:0.3s;
+}
+
+.nav a:hover{
+background:white;
+color:green;
+}
+
+/* LAYOUT */
+.container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+padding:20px;
+}
+
+/* SELLER INFO */
+.seller{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:15px;
+border-radius:12px;
+margin-bottom:15px;
+animation:fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* ICONS */
+.icons i{
+margin:5px;
+padding:10px;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+cursor:pointer;
+transition:0.3s;
+}
+
+.icons i:hover{
+transform:scale(1.2);
+background:white;
+color:green;
+}
+
+/* WALL (FEED) */
+.wall{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:12px;
+}
+
+.post{
+background:white;
+color:black;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+animation:pop 0.5s ease;
+}
+
+@keyframes pop{
+from{transform:scale(0.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.post h4{
+color:green;
+}
+
+/* BUTTON */
+.like{
+background:green;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+}
+
+/* CHAT */
+#chatBox{
+position:fixed;
+bottom:20px;
+right:20px;
+width:280px;
+background:white;
+color:black;
+border-radius:10px;
+display:none;
+overflow:hidden;
+}
+
+#chatHeader{
+background:green;
+color:white;
+padding:10px;
+display:flex;
+justify-content:space-between;
+}
+
+#chatMessages{
+height:180px;
+overflow:auto;
+padding:10px;
+}
+
+#chatInput{
+display:flex;
+}
+
+#chatInput input{
+flex:1;
+padding:8px;
+border:none;
+}
+
+#chatInput button{
+background:green;
+color:white;
+border:none;
+padding:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<h2>🍍 Sellers Wall</h2>
+
+<div class="nav">
+<a href="index.html">Home</a>
+<a href="fruits.html">Fruits</a>
+<a href="sellers.html">Sellers</a>
+</div>
+</div>
+
+<div class="container">
+
+<!-- SELLERS LIST -->
+<div>
+
+<div class="seller">
+<h3>John Market</h3>
+<p>📞 +250 788 111 222</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250788111222')"></i>
+<i class="fa fa-message" onclick="msg('John')"></i>
+<i class="fa fa-comments" onclick="openChat('John')"></i>
+</div>
+</div>
+
+<div class="seller">
+<h3>Mary Fruits</h3>
+<p>📞 +250 722 333 444</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250722333444')"></i>
+<i class="fa fa-message" onclick="msg('Mary')"></i>
+<i class="fa fa-comments" onclick="openChat('Mary')"></i>
+</div>
+</div>
+
+<div class="seller">
+<h3>Kevin Store</h3>
+<p>📞 +250 788 999 000</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250788999000')"></i>
+<i class="fa fa-message" onclick="msg('Kevin')"></i>
+<i class="fa fa-comments" onclick="openChat('Kevin')"></i>
+</div>
+</div>
+
+<div class="seller">
+<h3>Agri Fresh</h3>
+<p>📞 +250 700 222 333</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250700222333')"></i>
+<i class="fa fa-message" onclick="msg('Agri')"></i>
+<i class="fa fa-comments" onclick="openChat('Agri')"></i>
+</div>
+</div>
+
+<div class="seller">
+<h3>Green Farm</h3>
+<p>📞 +250 788 444 555</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250788444555')"></i>
+<i class="fa fa-message" onclick="msg('Green')"></i>
+<i class="fa fa-comments" onclick="openChat('Green')"></i>
+</div>
+</div>
+
+<div class="seller">
+<h3>Fresh World</h3>
+<p>📞 +250 722 111 999</p>
+
+<div class="icons">
+<i class="fa fa-phone" onclick="call('+250722111999')"></i>
+<i class="fa fa-message" onclick="msg('Fresh')"></i>
+<i class="fa fa-comments" onclick="openChat('Fresh')"></i>
+</div>
+</div>
+
+</div>
+
+<!-- WALL -->
+<div class="wall">
+
+<h2>🧱 Sellers News Wall</h2>
+
+<div class="post">
+<h4>John Market</h4>
+<p>🍎 Apples on discount today! 20% OFF</p>
+<button class="like">❤️ Like</button>
+</div>
+
+<div class="post">
+<h4>Mary Fruits</h4>
+<p>🍌 Fresh bananas arrived this morning</p>
+<button class="like">❤️ Like</button>
+</div>
+
+<div class="post">
+<h4>Kevin Store</h4>
+<p>🍍 Pineapple special offer this week</p>
+<button class="like">❤️ Like</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CHAT -->
+<div id="chatBox">
+<div id="chatHeader">
+<span id="chatTitle">Chat</span>
+<span onclick="closeChat()">❌</span>
+</div>
+
+<div id="chatMessages"></div>
+
+<div id="chatInput">
+<input type="text" id="msgInput">
+<button onclick="sendMsg()">Send</button>
+</div>
+</div>
+
+<script>
+
+let current="";
+
+function call(num){
+window.location.href="tel:"+num;
+}
+
+function msg(name){
+let m=prompt("Message to "+name);
+if(m) alert("Sent: "+m);
+}
+
+function openChat(name){
+current=name;
+document.getElementById("chatBox").style.display="block";
+document.getElementById("chatTitle").innerText="Chat - "+name;
+}
+
+function closeChat(){
+document.getElementById("chatBox").style.display="none";
+}
+
+function sendMsg(){
+let input=document.getElementById("msgInput");
+if(input.value==="") return;
+
+let box=document.getElementById("chatMessages");
+
+box.innerHTML+=`<p><b>You:</b> ${input.value}</p>`;
+box.innerHTML+=`<p><b>${current}:</b> OK 👍</p>`;
+
+input.value="";
+}
+
+</script>
+
+</body>
+</html>

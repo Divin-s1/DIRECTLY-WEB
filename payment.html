@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra Payment System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+/* DARK GREEN LIGHT EFFECT */
+background:linear-gradient(135deg,#04140d,#06361f,#021008);
+overflow:hidden;
+animation:bgMove 10s infinite alternate;
+}
+
+@keyframes bgMove{
+0%{filter:brightness(0.9);}
+100%{filter:brightness(0.6);}
+}
+
+/* LIGHT PARTICLES */
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(circle,rgba(0,255,120,0.1) 2px,transparent 2px);
+background-size:60px 60px;
+animation:move 18s linear infinite;
+}
+
+@keyframes move{
+from{transform:translate(0,0);}
+to{transform:translate(-200px,-200px);}
+}
+
+/* BACK BUTTON */
+.back-btn{
+position:fixed;
+top:20px;
+left:20px;
+background:rgba(0,255,120,0.15);
+backdrop-filter:blur(10px);
+color:#00ffcc;
+padding:10px 15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+border:1px solid rgba(0,255,120,0.3);
+transition:0.3s;
+z-index:1000;
+animation:float 2s infinite alternate;
+}
+
+.back-btn:hover{
+transform:scale(1.1);
+background:#00ff66;
+color:black;
+box-shadow:0 0 15px #00ff99;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(5px);}
+}
+
+/* CONTAINER */
+.container{
+display:grid;
+grid-template-columns:1fr 1fr;
+width:95%;
+max-width:1000px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(20px);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(0,255,120,0.2);
+animation:pop 1s ease;
+z-index:2;
+}
+
+@keyframes pop{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+/* LEFT */
+.left{
+background:linear-gradient(135deg,#05381f,#02150c);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:30px;
+animation:slideLeft 1s ease;
+}
+
+@keyframes slideLeft{
+from{transform:translateX(-100px);opacity:0;}
+to{transform:translateX(0);opacity:1;}
+}
+
+.left img{
+width:110px;
+height:110px;
+border-radius:50%;
+animation:spin 10s linear infinite, glow 2s infinite alternate;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #00ff88;}
+to{box-shadow:0 0 30px #00ffcc;}
+}
+
+/* RIGHT */
+.right{
+padding:30px;
+color:white;
+position:relative;
+animation:slideRight 1s ease;
+}
+
+@keyframes slideRight{
+from{transform:translateX(100px);opacity:0;}
+to{transform:translateX(0);opacity:1;}
+}
+
+/* CLOCK */
+.clock{
+position:absolute;
+top:10px;
+right:15px;
+font-size:13px;
+color:#00ffcc;
+}
+
+/* INPUTS */
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+background:rgba(255,255,255,0.08);
+color:white;
+transition:0.3s;
+}
+
+input:focus{
+transform:scale(1.03);
+box-shadow:0 0 15px #00ff99;
+}
+
+/* METHODS */
+.methods{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:10px 0;
+}
+
+.method{
+padding:10px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+border:1px solid rgba(255,255,255,0.2);
+transition:0.3s;
+background:rgba(255,255,255,0.05);
+}
+
+.method:hover{
+transform:scale(1.05);
+box-shadow:0 0 10px #00ff99;
+}
+
+.active{
+background:#00ff66;
+color:black;
+font-weight:bold;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#00ff88,#00cc66);
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+margin-top:10px;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #00ff99;
+}
+
+/* LOADING */
+.loading{
+display:none;
+text-align:center;
+margin-top:10px;
+color:#00ffcc;
+}
+
+/* RECEIPT */
+#receipt{
+display:none;
+background:rgba(255,255,255,0.08);
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* FOOTER */
+.footer{
+margin-top:15px;
+color:#00ffcc;
+font-size:13px;
+text-align:center;
+z-index:2;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+<a href="fruits.html" class="back-btn">⬅ Fruits</a>
+
+<audio id="sound" src="thank.mp3"></audio>
+
+<div class="container">
+
+<div class="left">
+<img src="r.png">
+<h2>Ultra Payment System</h2>
+<p>MTN • Airtel • Visa • Crypto • Bank</p>
+</div>
+
+<div class="right">
+
+<div class="clock" id="clock"></div>
+
+<h2>Complete Payment</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="phone" placeholder="Phone">
+<input id="amount" placeholder="Amount (RWF)">
+<input id="pin" type="password" placeholder="PIN">
+
+<div class="methods">
+<div class="method active" onclick="set('MTN',this)">MTN</div>
+<div class="method" onclick="set('Airtel',this)">Airtel</div>
+<div class="method" onclick="set('Visa',this)">Visa</div>
+<div class="method" onclick="set('Crypto',this)">Crypto</div>
+<div class="method" onclick="set('Bank',this)">Bank</div>
+</div>
+
+<button onclick="pay()">Pay Now</button>
+
+<div class="loading" id="loading">Processing payment...</div>
+
+<div id="receipt"></div>
+
+</div>
+
+</div>
+
+<div class="footer">
+Thanks for using our system 💚 | © 2026 Ultra Payment
+</div>
+
+<script>
+
+let method="MTN";
+
+function set(m,el){
+method=m;
+document.querySelectorAll(".method").forEach(x=>x.classList.remove("active"));
+el.classList.add("active");
+}
+
+function clock(){
+document.getElementById("clock").innerText=new Date().toLocaleString();
+}
+setInterval(clock,1000);
+
+function downloadReceipt(text){
+let blob=new Blob([text],{type:"text/plain"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="receipt.txt";
+a.click();
+}
+
+function pay(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let amount=document.getElementById("amount").value;
+let pin=document.getElementById("pin").value;
+
+if(!name||!phone||!amount||!pin){
+alert("Fill all fields");
+return;
+}
+
+document.getElementById("loading").style.display="block";
+
+setTimeout(()=>{
+
+document.getElementById("loading").style.display="none";
+
+let tx="TXN"+Math.floor(Math.random()*999999);
+
+let receipt=`
+ULTRA PAYMENT RECEIPT
+
+Transaction: ${tx}
+Name: ${name}
+Phone: ${phone}
+Amount: ${amount} RWF
+Method: ${method}
+Date: ${new Date().toLocaleString()}
+
+Thank you for your payment 💚
+`;
+
+document.getElementById("receipt").style.display="block";
+document.getElementById("receipt").innerText=receipt;
+
+document.getElementById("sound").play();
+
+downloadReceipt(receipt);
+
+},3000);
+}
+
+</script>
+
+</body>
+</html>

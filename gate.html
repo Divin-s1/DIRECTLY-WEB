@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Nyanza Fruit</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+height:100vh;
+display:flex;
+overflow:hidden;
+background:#0b0f0c;
+}
+
+/* LEFT IMAGE */
+.left{
+flex:1;
+background:url("r.png");
+background-size:cover;
+background-position:center;
+animation:zoom 10s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+/* RIGHT FORM */
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(120deg,#0b0f0c,#111);
+}
+
+/* FORM BOX */
+.login-box{
+width:360px;
+background:#111;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 25px rgba(0,255,100,0.25);
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+text-align:center;
+color:#00ff7b;
+margin-bottom:15px;
+font-family:cursive;
+}
+
+/* INPUTS */
+input, select{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+outline:none;
+background:#1b1b1b;
+color:white;
+transition:0.3s;
+}
+
+input:focus, select:focus{
+box-shadow:0 0 10px #00ff7b;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:#00ff7b;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#00cc66;
+transform:scale(1.03);
+}
+
+/* FORGOT PASSWORD */
+a{
+display:block;
+text-align:center;
+margin-top:10px;
+color:#00ff7b;
+font-size:13px;
+cursor:pointer;
+text-decoration:none;
+}
+
+#error{
+color:red;
+font-size:13px;
+margin-top:8px;
+text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+body{
+flex-direction:column;
+}
+.left{
+height:35vh;
+}
+.right{
+height:65vh;
+}
+.login-box{
+width:90%;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LEFT -->
+<div class="left"></div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<div class="login-box">
+
+<h2>🍏 Login</h2>
+
+<input type="text" id="name" placeholder="Your name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<select id="area">
+<option value="">Select Area</option>
+<option>Nyanza City</option>
+<option>Busasamana</option>
+<option>Bweramana</option>
+<option>Muko</option>
+<option>Kigoma</option>
+<option>Other</option>
+</select>
+
+<input type="text" id="otherArea" placeholder="If other, type your area">
+
+<button onclick="login()">Continue</button>
+
+<a onclick="forgot()">Forgot Password?</a>
+
+<div id="error"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let pass = document.getElementById("password").value;
+let area = document.getElementById("area").value;
+let other = document.getElementById("otherArea").value;
+
+let error = document.getElementById("error");
+
+if(name=="" || email=="" || pass=="" || area==""){
+error.innerText = "Fill all fields!";
+return;
+}
+
+if(area==="Other" && other===""){
+error.innerText = "Please enter your area!";
+return;
+}
+
+localStorage.setItem("username", name);
+localStorage.setItem("area", area==="Other" ? other : area);
+
+
+window.location.href = "index.html";
+}
+
+function forgot(){
+window.location.href = "forgot.html";
+}
+
+</script>
+
+</body>
+</html>

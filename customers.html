@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customers - Nyanza Modern Fruit</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url("r.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+}
+
+/* HEADER NAV (same style as other pages) */
+.header{
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.header h2{
+font-size:20px;
+}
+
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:8px 12px;
+background:rgba(255,255,255,0.12);
+border-radius:8px;
+transition:0.3s;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
+}
+
+.nav a:hover{
+background:white;
+color:green;
+transform:scale(1.05);
+}
+
+.nav i{
+color:yellow;
+}
+
+/* GRID */
+.container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+padding:20px;
+}
+
+/* BOX */
+.box{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:15px;
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.info{
+background:rgba(255,255,255,0.08);
+padding:10px;
+margin:10px 0;
+border-left:4px solid lime;
+border-radius:8px;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+outline:none;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:linear-gradient(90deg,green,limegreen);
+border:none;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* RESULT */
+#result{
+margin-top:10px;
+}
+
+/* FOOTER */
+.footer{
+margin-top:40px;
+background:rgba(0,100,0,0.9);
+text-align:center;
+padding:25px;
+border-top:3px solid yellow;
+}
+
+.footer p{
+font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.container{
+grid-template-columns:1fr;
+}
+
+.nav{
+justify-content:center;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+
+<h2>🍍 Nyanza Fruits Center</h2>
+
+<div class="nav">
+
+<a href="index.html"><i class="fa fa-home"></i>Home</a>
+<a href="fruits.html"><i class="fa fa-apple-whole"></i>Fruits</a>
+<a href="sellers.html"><i class="fa fa-store"></i>Sellers</a>
+<a href="customers.html"><i class="fa fa-users"></i>Customers</a>
+<a href="services.html"><i class="fa fa-truck"></i>Services</a>
+<a href="contact.html"><i class="fa fa-phone"></i>Contact</a>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+<div class="box">
+<h2>📌 How It Works</h2>
+
+<div class="info">🍎 Sellers post fruits with price</div>
+<div class="info">🛒 Customers choose fruits and order</div>
+<div class="info">📞 Contact sellers directly</div>
+<div class="info">🚚 Fast delivery after confirmation</div>
+<div class="info">💬 Support available 24/7</div>
+</div>
+
+<div class="box">
+<h2>📋 Requirements</h2>
+
+<div class="info">✔ Use correct name</div>
+<div class="info">✔ Provide real location</div>
+<div class="info">✔ Confirm order</div>
+<div class="info">✔ Stay available on phone</div>
+<div class="info">✔ Respect delivery rules</div>
+</div>
+
+<div class="box">
+<h2>📦 Check Order Status</h2>
+
+<input type="text" id="orderName" placeholder="Fruit name">
+<input type="text" id="location" placeholder="Your location">
+
+<button onclick="checkOrder()">Check Order</button>
+
+<div id="result"></div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<h3>🍍 NYANZA MODERN FRUIT</h3>
+<p>Fresh • Healthy • Natural Fruits</p>
+<p>Customer satisfaction first</p>
+<p>© 2026 All Rights Reserved</p>
+</div>
+
+<script>
+
+function checkOrder(){
+
+let fruit=document.getElementById("orderName").value;
+let loc=document.getElementById("location").value;
+let result=document.getElementById("result");
+
+if(fruit==""||loc==""){
+result.innerHTML="<p style='color:red'>Fill all fields!</p>";
+return;
+}
+
+result.innerHTML=`
+<div class="info">
+📦 Order: <b>${fruit}</b><br>
+🚚 Location: <b>${loc}</b><br>
+⏳ Status: Pending approval
+</div>
+`;
+}
+
+</script>
+
+</body>
+</html>

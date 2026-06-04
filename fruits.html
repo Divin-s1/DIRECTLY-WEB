@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nyanza Modern Fruit 🍎</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+/* BODY */
+body{
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url("r.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+overflow-x:hidden;
+color:white;
+}
+
+/* 🌧️ RAIN */
+.rain{
+position:fixed;
+top:-10px;
+width:2px;
+height:15px;
+background:rgba(255,255,255,0.6);
+animation:fall linear infinite;
+opacity:0.7;
+z-index:-1;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh);
+}
+100%{
+transform:translateY(110vh);
+}
+}
+
+/* 🌸 FLOWERS */
+.flower{
+position:fixed;
+font-size:18px;
+animation:float 10s linear infinite;
+opacity:0.8;
+z-index:-1;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-80px);}
+100%{transform:translateY(0);}
+}
+
+/* HEADER */
+.header{
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+animation:slideDown 1s ease;
+}
+
+@keyframes slideDown{
+from{
+transform:translateY(-100%);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+.header h1{
+font-family:cursive;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+/* NAV */
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+align-items:center;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+background:rgba(255,255,255,0.12);
+transition:0.3s;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
+}
+
+.nav a:hover{
+background:white;
+color:green;
+transform:scale(1.08);
+box-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+.nav i{
+color:yellow;
+}
+
+/* TITLE */
+.title{
+text-align:center;
+padding:25px;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* SEARCH */
+.search-box{
+text-align:center;
+margin:35px 20px 20px 20px;
+animation:fadeIn 1.5s ease;
+}
+
+.search-box input{
+width:350px;
+max-width:90%;
+padding:14px 20px;
+border:none;
+border-radius:50px;
+outline:none;
+font-size:16px;
+background:rgba(255,255,255,0.18);
+backdrop-filter:blur(10px);
+color:white;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.search-box input::placeholder{
+color:#ddd;
+}
+
+.search-box input:focus{
+transform:scale(1.03);
+box-shadow:0 0 18px limegreen;
+background:rgba(255,255,255,0.25);
+}
+
+/* CART */
+.cart{
+width:90%;
+margin:auto;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+padding:20px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+.cart h2{
+margin-bottom:15px;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.remove-btn{
+background:red;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* CHECKOUT */
+.checkout-btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,green,limegreen);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.checkout-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px rgb(75, 180, 75);
+}
+
+/* MESSAGE */
+#paymentMsg{
+margin-top:15px;
+color:yellow;
+font-weight:bold;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+padding:30px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(12px);
+border-radius:15px;
+overflow:hidden;
+transition:0.4s;
+animation:pop 0.8s ease;
+}
+
+@keyframes pop{
+from{
+transform:scale(0.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+text-align:center;
+}
+
+.price{
+color:yellow;
+font-weight:bold;
+margin:10px 0;
+}
+
+.btn{
+margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+background:green;
+color:white;
+cursor:pointer;
+transition:0.3s;
+font-weight:bold;
+}
+
+.btn:hover{
+background:limegreen;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+.footer{
+margin-top:50px;
+background:linear-gradient(90deg,#004d00,#00a000);
+text-align:center;
+padding:30px;
+border-top-left-radius:40px;
+border-top-right-radius:40px;
+}
+
+.footer p{
+margin-top:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.nav{
+justify-content:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="rain"></div>
+
+<!-- FLOWERS -->
+<div class="flower" style="top:10%;left:10%;">🌸</div>
+<div class="flower" style="top:30%;left:80%;">🌼</div>
+<div class="flower" style="top:60%;left:20%;">🌺</div>
+<div class="flower" style="top:80%;left:70%;">🌷</div>
+
+<!-- HEADER -->
+<div class="header">
+
+<h1>🍎 NYANZA MODERN FRUIT</h1>
+
+<div class="nav">
+
+<a href="index.html">
+<i class="fa fa-home"></i> Home
+</a>
+
+<a href="fruits.html">
+<i class="fa fa-apple-whole"></i> Fruits
+</a>
+
+<a href="services.html">
+<i class="fa fa-truck"></i> Services
+</a>
+
+<a href="contact.html">
+<i class="fa fa-phone"></i> Contact
+</a>
+
+<a href="#">
+<i class="fa fa-cart-shopping"></i> Shop
+</a>
+
+<a href="#">
+<i class="fa fa-user-shield"></i> Admin
+</a>
+
+</div>
+</div>
+
+<!-- TITLE -->
+<div class="title">
+<h2>Fresh Fruits Market 🍍🍌🍓</h2>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+
+<input 
+type="text" 
+id="searchInput" 
+placeholder="🔍 Search your favorite fruit..."
+>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+
+<h2>🛒 Shopping Cart</h2>
+
+<div id="cartItems"></div>
+
+<h3>Total: <span id="cartTotal">0</span> RWF</h3>
+
+<button class="checkout-btn" onclick="goToPayment()">
+💳 Checkout
+</button>
+
+<p id="paymentMsg"></p>
+
+</div>
+
+<!-- PRODUCTS -->
+<div class="grid">
+
+<!-- APPLE -->
+<div class="card">
+<img src="apple.png">
+<div class="card-content">
+<h3>Apple</h3>
+<p class="price">500 RWF</p>
+<button class="btn" onclick="addToCart('Apple',500)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="apple.png">
+<div class="card-content">
+<h3>Green Apple</h3>
+<p class="price">700 RWF</p>
+<button class="btn" onclick="addToCart('Green Apple',700)">Add</button>
+</div>
+</div>
+
+<!-- MANGO -->
+<div class="card">
+<img src="mango.png">
+<div class="card-content">
+<h3>Mango</h3>
+<p class="price">1000 RWF</p>
+<button class="btn" onclick="addToCart('Mango',1000)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="mango.png">
+<div class="card-content">
+<h3>Sweet Mango</h3>
+<p class="price">1200 RWF</p>
+<button class="btn" onclick="addToCart('Sweet Mango',1200)">Add</button>
+</div>
+</div>
+
+<!-- KIWI -->
+<div class="card">
+<img src="kiwi.png">
+<div class="card-content">
+<h3>Kiwi</h3>
+<p class="price">2000 RWF</p>
+<button class="btn" onclick="addToCart('Kiwi',2000)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="kiwi.png">
+<div class="card-content">
+<h3>Fresh Kiwi</h3>
+<p class="price">2200 RWF</p>
+<button class="btn" onclick="addToCart('Fresh Kiwi',2200)">Add</button>
+</div>
+</div>
+
+<!-- GUAVA -->
+<div class="card">
+<img src="guava.png">
+<div class="card-content">
+<h3>Guava</h3>
+<p class="price">900 RWF</p>
+<button class="btn" onclick="addToCart('Guava',900)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="guava.png">
+<div class="card-content">
+<h3>Sweet Guava</h3>
+<p class="price">1100 RWF</p>
+<button class="btn" onclick="addToCart('Sweet Guava',1100)">Add</button>
+</div>
+</div>
+
+<!-- WATERMELON -->
+<div class="card">
+<img src="watermelon.png">
+<div class="card-content">
+<h3>Watermelon</h3>
+<p class="price">800 RWF</p>
+<button class="btn" onclick="addToCart('Watermelon',800)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="watermelon.png">
+<div class="card-content">
+<h3>Big Watermelon</h3>
+<p class="price">1500 RWF</p>
+<button class="btn" onclick="addToCart('Big Watermelon',1500)">Add</button>
+</div>
+</div>
+
+<!-- CHERRY -->
+<div class="card">
+<img src="cherry.png">
+<div class="card-content">
+<h3>Cherry</h3>
+<p class="price">2500 RWF</p>
+<button class="btn" onclick="addToCart('Cherry',2500)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="cherry.png">
+<div class="card-content">
+<h3>Red Cherry</h3>
+<p class="price">2800 RWF</p>
+<button class="btn" onclick="addToCart('Red Cherry',2800)">Add</button>
+</div>
+</div>
+
+<!-- PEAR -->
+<div class="card">
+<img src="pear.png">
+<div class="card-content">
+<h3>Pear</h3>
+<p class="price">1700 RWF</p>
+<button class="btn" onclick="addToCart('Pear',1700)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="pear.png">
+<div class="card-content">
+<h3>Sweet Pear</h3>
+<p class="price">1900 RWF</p>
+<button class="btn" onclick="addToCart('Sweet Pear',1900)">Add</button>
+</div>
+</div>
+
+<!-- PEACH -->
+<div class="card">
+<img src="peach.png">
+<div class="card-content">
+<h3>Peach</h3>
+<p class="price">1600 RWF</p>
+<button class="btn" onclick="addToCart('Peach',1600)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="peach.png">
+<div class="card-content">
+<h3>Fresh Peach</h3>
+<p class="price">1800 RWF</p>
+<button class="btn" onclick="addToCart('Fresh Peach',1800)">Add</button>
+</div>
+</div>
+
+<!-- LEMON -->
+<div class="card">
+<img src="lemon.png">
+<div class="card-content">
+<h3>Lemon</h3>
+<p class="price">1000 RWF</p>
+<button class="btn" onclick="addToCart('Lemon',1000)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="lemon.png">
+<div class="card-content">
+<h3>Yellow Lemon</h3>
+<p class="price">1200 RWF</p>
+<button class="btn" onclick="addToCart('Yellow Lemon',1200)">Add</button>
+</div>
+</div>
+
+<!-- PASSION -->
+<div class="card">
+<img src="passion.png">
+<div class="card-content">
+<h3>Passion Fruit</h3>
+<p class="price">1800 RWF</p>
+<button class="btn" onclick="addToCart('Passion Fruit',1800)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="passion.png">
+<div class="card-content">
+<h3>Sweet Passion</h3>
+<p class="price">2000 RWF</p>
+<button class="btn" onclick="addToCart('Sweet Passion',2000)">Add</button>
+</div>
+</div>
+
+<!-- ORANGE -->
+<div class="card">
+<img src="orange.png">
+<div class="card-content">
+<h3>Orange</h3>
+<p class="price">700 RWF</p>
+<button class="btn" onclick="addToCart('Orange',700)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="orange.png">
+<div class="card-content">
+<h3>Sweet Orange</h3>
+<p class="price">900 RWF</p>
+<button class="btn" onclick="addToCart('Sweet Orange',900)">Add</button>
+</div>
+</div>
+
+<!-- GRAPES -->
+<div class="card">
+<img src="grapes.png">
+<div class="card-content">
+<h3>Grapes</h3>
+<p class="price">2100 RWF</p>
+<button class="btn" onclick="addToCart('Grapes',2100)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="grapes.png">
+<div class="card-content">
+<h3>Fresh Grapes</h3>
+<p class="price">2300 RWF</p>
+<button class="btn" onclick="addToCart('Fresh Grapes',2300)">Add</button>
+</div>
+</div>
+
+<!-- COCONUT -->
+<div class="card">
+<img src="coconut.png">
+<div class="card-content">
+<h3>Coconut</h3>
+<p class="price">1500 RWF</p>
+<button class="btn" onclick="addToCart('Coconut',1500)">Add</button>
+</div>
+</div>
+
+<div class="card">
+<img src="coconut.png">
+<div class="card-content">
+<h3>Fresh Coconut</h3>
+<p class="price">1700 RWF</p>
+<button class="btn" onclick="addToCart('Fresh Coconut',1700)">Add</button>
+</div>
+</div>
+
+</div>
+
+<script>
+
+/* 🌧️ RAIN EFFECT */
+const rain=document.getElementById("rain");
+
+for(let i=0;i<100;i++){
+
+let drop=document.createElement("div");
+
+drop.classList.add("rain");
+
+drop.style.left=Math.random()*100+"vw";
+
+drop.style.animationDuration=(0.5+Math.random())+"s";
+
+rain.appendChild(drop);
+
+}
+
+/* 🛒 CART */
+let cart=[];
+
+function addToCart(name,price){
+
+cart.push({name,price});
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let box=document.getElementById("cartItems");
+
+let total=0;
+
+box.innerHTML="";
+
+cart.forEach((c,i)=>{
+
+total+=c.price;
+
+box.innerHTML+=`
+<div class="cart-item">
+<span>${c.name} - ${c.price} RWF</span>
+<button class="remove-btn" onclick="removeItem(${i})">X</button>
+</div>
+`;
+
+});
+
+document.getElementById("cartTotal").innerText=total;
+
+}
+
+function removeItem(i){
+
+cart.splice(i,1);
+
+updateCart();
+
+}
+
+/* 🔍 SEARCH */
+document.getElementById("searchInput").addEventListener("keyup",function(){
+
+let v=this.value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(c=>{
+
+c.style.display=
+c.innerText.toLowerCase().includes(v)
+? "block"
+: "none";
+
+});
+
+});
+
+/* 💳 CHECKOUT */
+function goToPayment(){
+
+if(cart.length===0){
+
+alert("Cart is empty!");
+
+return;
+
+}
+
+document.getElementById("paymentMsg").innerHTML=
+"⏳ Directing to payment...";
+
+localStorage.setItem("fruitCart",JSON.stringify(cart));
+
+setTimeout(()=>{
+
+window.location.href="payment.html";
+
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>

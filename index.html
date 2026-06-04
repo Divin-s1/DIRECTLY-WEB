@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nyanza Fruit Center 🍎</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url("r.png");
+background-size:cover;
+background-position:center;
+color:white;
+}
+
+/* FLOWERS */
+.flower{
+position:absolute;
+font-size:20px;
+animation:float 10s linear infinite;
+opacity:0.8;
+}
+
+@keyframes float{
+0%{transform:translateY(0) rotate(0deg);}
+50%{transform:translateY(-100px) rotate(180deg);}
+100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:rgba(0,0,0,0.3);
+animation:slideDown 1s ease;
+flex-wrap:wrap;
+}
+
+@keyframes slideDown{
+from{transform:translateY(-100%);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:22px;
+font-weight:bold;
+}
+
+.logo img{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+/* NAV */
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+align-items:center;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:8px 12px;
+border-radius:8px;
+background:rgba(255,255,255,0.1);
+transition:0.3s;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
+}
+
+.nav a:hover{
+background:white;
+color:green;
+transform:scale(1.1);
+}
+
+.nav i{
+color:yellow;
+}
+
+/* CENTER */
+.center{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.center h1{
+font-size:45px;
+animation:floatText 3s infinite ease-in-out;
+}
+
+@keyframes floatText{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.center p{
+margin-top:10px;
+opacity:0.8;
+font-size:18px;
+}
+
+.btn{
+margin-top:20px;
+padding:15px 40px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+background:linear-gradient(90deg, green, limegreen);
+color:white;
+transition:0.3s;
+box-shadow:0 0 15px green;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px lime;
+}
+
+/* FOOTER */
+footer{
+position:absolute;
+bottom:0;
+width:100%;
+text-align:center;
+padding:15px;
+background:rgba(0,0,0,0.4);
+}
+
+/* 🌟 FLOATING ICONS */
+.floating-icon{
+position:fixed;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px rgba(0,255,0,0.6);
+animation:bounce 2s infinite;
+z-index:999;
+}
+
+.floating-icon:hover{
+transform:scale(1.2);
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* ICON 1 - CHAT */
+.chat{
+bottom:20px;
+background:linear-gradient(45deg, green, limegreen);
+}
+
+/* ICON 2 - SCREEN */
+.screen{
+bottom:90px;
+background:linear-gradient(45deg, orange, red);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.center h1{font-size:30px;}
+.nav{justify-content:center;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+  <img src="m.png" alt="Logo">
+  NYANZA FRUIT CENTER
+</div>
+
+<div class="nav">
+
+<a href="index.html"><i class="fa fa-home"></i> Home</a>
+<a href="gate.html"><i class="fa fa-lock"></i> signup</a>
+<a href="fruits.html"><i class="fa fa-apple-whole"></i> Fruits</a>
+<a href="sellers.html"><i class="fa fa-store"></i> Sellers</a>
+<a href="customers.html"><i class="fa fa-users"></i> Customers</a>
+<a href="services.html"><i class="fa fa-truck"></i> Services</a>
+<a href="contact.html"><i class="fa fa-phone"></i> Contact</a>
+
+</div>
+
+</header>
+
+<!-- FLOWERS -->
+<div class="flower" style="top:20%; left:10%;">🌸</div>
+<div class="flower" style="top:40%; left:80%;">🌼</div>
+<div class="flower" style="top:70%; left:30%;">🌺</div>
+<div class="flower" style="top:30%; left:60%;">🌷</div>
+
+<!-- CENTER -->
+<div class="center">
+
+<h1>Fresh Fruits Daily</h1>
+<p>Healthy • Natural • Delivered Fast in Rwanda</p>
+
+<button class="btn" onclick="goToFruits()">
+👍 EXPLORE
+</button>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>🌧️ Rain • 🌸 Flowers • 🍎 Fresh Fruits • 💚 Healthy Life</p>
+<p>© 2026 Nyanza Fruit Center</p>
+</footer>
+
+<!-- 💬 CHAT ICON -->
+<a href="contact.html" class="floating-icon chat">
+<i class="fa fa-comment-dots"></i>
+</a>
+
+<!-- 📌 SCREEN ICON -->
+<a href="screen.html" class="floating-icon screen">
+<i class="fa fa-tv"></i>
+</a>
+
+<script>
+
+function goToFruits(){
+document.body.style.opacity="0";
+setTimeout(()=>{
+window.location.href="fruits.html";
+},500);
+}
+
+</script>
+
+</body>
+</html>

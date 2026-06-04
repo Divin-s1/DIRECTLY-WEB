@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Services - Nyanza Modern Fruit</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url("r.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color:white;
+}
+
+/* NAV */
+nav{
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav h2{
+    font-family:cursive;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:10px 15px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.12);
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+nav ul li a:hover{
+    background:white;
+    color:green;
+    transform:scale(1.05);
+}
+
+nav i{
+    color:yellow;
+}
+
+/* CONTAINER */
+.container{
+    padding:20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+
+/* BOX */
+.box{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.box h2{
+    margin-bottom:10px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:12px;
+    margin:10px 0;
+    border-left:5px solid lime;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.card:hover{
+    background:limegreen;
+    color:black;
+    transform:scale(1.03);
+}
+
+/* BUTTON */
+.meet-btn{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,green,limegreen);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.meet-btn:hover{
+    transform:scale(1.05);
+}
+
+/* FOOTER */
+.footer{
+    margin-top:40px;
+    background: rgba(0, 100, 0, 0.9);
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-family:cursive;
+    border-top:3px solid yellow;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    nav ul{
+        justify-content:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+
+    <h2>🍍 Nyanza Fruits Center</h2>
+
+    <ul>
+        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="fruits.html"><i class="fa fa-apple-whole"></i> Fruits</a></li>
+        <li><a href="sellers.html"><i class="fa fa-store"></i> Sellers</a></li>
+        <li><a href="customers.html"><i class="fa fa-users"></i> Customers</a></li>
+        <li><a href="services.html"><i class="fa fa-truck"></i> Services</a></li>
+        <li><a href="contact.html"><i class="fa fa-phone"></i> Contact</a></li>
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <div class="box">
+        <h2>🛒 Customer Services</h2>
+
+        <div class="card">✔ Buy fresh fruits online easily</div>
+        <div class="card">✔ Fast delivery to your location</div>
+        <div class="card">✔ Contact sellers directly</div>
+        <div class="card">✔ Order tracking system</div>
+        <div class="card">✔ 24/7 support</div>
+    </div>
+
+    <div class="box">
+        <h2>👨‍🌾 Seller Services</h2>
+
+        <div class="card">✔ Post fruits for sale easily</div>
+        <div class="card">✔ Manage prices & descriptions</div>
+        <div class="card">✔ Receive customer orders</div>
+        <div class="card">✔ Increase online sales</div>
+        <div class="card">✔ Free advertising</div>
+    </div>
+
+    <div class="box">
+        <h2>🌐 Platform Services</h2>
+
+        <div class="card">✔ Secure marketplace</div>
+        <div class="card">✔ Easy navigation system</div>
+        <div class="card">✔ Mobile friendly design</div>
+        <div class="card">✔ Fast performance</div>
+        <div class="card">✔ Free usage</div>
+    </div>
+
+    <div class="box">
+        <h2>💬 Help & Support</h2>
+
+        <div class="card">📞 +250 788 000 111</div>
+        <div class="card">📧 support@nyanza.com</div>
+        <div class="card">💬 Live chat coming soon</div>
+
+        <button class="meet-btn" onclick="meetSupport()">
+            📞 Contact Support
+        </button>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <h3>🍍 NYANZA MODERN FRUIT</h3>
+    <p>Fresh • Healthy • Natural Fruits</p>
+    <p>Best online fruit marketplace in Rwanda</p>
+    <p>© 2026 All Rights Reserved</p>
+</div>
+
+<script>
+function meetSupport(){
+    alert("Connecting to support...");
+    window.location.href = "tel:+250788000111";
+}
+</script>
+
+</body>
+</html>

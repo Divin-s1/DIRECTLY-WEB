@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgot Password - Nyanza Fruit</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+height:100vh;
+display:flex;
+overflow:hidden;
+background:#0b0f0c;
+}
+
+/* LEFT IMAGE */
+.left{
+flex:1;
+background:url("hr.png");
+background-size:cover;
+background-position:center;
+animation:zoom 10s infinite alternate;
+filter:brightness(0.8);
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+/* RIGHT AREA */
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(120deg,#0b0f0c,#111);
+}
+
+/* FLOATING SHAPES */
+.right::before,
+.right::after{
+content:"";
+position:absolute;
+width:200px;
+height:200px;
+background:rgba(0,255,120,0.08);
+border-radius:50%;
+animation:float 8s infinite ease-in-out;
+}
+
+.right::before{
+top:10%;
+left:60%;
+}
+
+.right::after{
+bottom:10%;
+left:20%;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-40px);}
+100%{transform:translateY(0);}
+}
+
+/* BOX */
+.box{
+width:370px;
+background:#111;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,255,100,0.25);
+animation:slideIn 1s ease;
+position:relative;
+z-index:2;
+}
+
+@keyframes slideIn{
+from{opacity:0; transform:translateY(60px) scale(0.9);}
+to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+h2{
+text-align:center;
+color:#00ff7b;
+margin-bottom:15px;
+font-family:cursive;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 5px #00ff7b;}
+to{text-shadow:0 0 20px #00ff7b;}
+}
+
+/* INPUTS */
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+outline:none;
+background:#1b1b1b;
+color:white;
+transition:0.3s;
+}
+
+input:focus{
+box-shadow:0 0 12px #00ff7b;
+transform:scale(1.02);
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:linear-gradient(90deg,#00ff7b,#00cc66);
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px #00ff7b;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #00ff7b;
+}
+
+/* BACK LINK */
+a{
+display:block;
+text-align:center;
+margin-top:10px;
+color:#00ff7b;
+font-size:13px;
+cursor:pointer;
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+/* ERROR */
+#error{
+color:red;
+font-size:13px;
+margin-top:8px;
+text-align:center;
+animation:shake 0.3s;
+}
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+body{
+flex-direction:column;
+}
+.left{
+height:35vh;
+}
+.right{
+height:65vh;
+}
+.box{
+width:90%;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LEFT IMAGE -->
+<div class="left"></div>
+
+<!-- RIGHT FORM -->
+<div class="right">
+
+<div class="box">
+
+<h2>🔐 Forgot Password</h2>
+
+<input type="text" id="contact" placeholder="Email or Phone Number">
+<input type="password" id="newpass" placeholder="New Password">
+<input type="password" id="confirm" placeholder="Confirm Password">
+
+<button onclick="resetPassword()">Confirm</button>
+
+<a onclick="backLogin()">← Back to Login</a>
+
+<div id="error"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function resetPassword(){
+
+let contact = document.getElementById("contact").value;
+let newpass = document.getElementById("newpass").value;
+let confirm = document.getElementById("confirm").value;
+let error = document.getElementById("error");
+
+if(contact=="" || newpass=="" || confirm==""){
+error.innerText = "Please fill all fields!";
+return;
+}
+
+if(newpass.length < 4){
+error.innerText = "Password too short!";
+return;
+}
+
+if(newpass !== confirm){
+error.innerText = "Passwords do not match!";
+return;
+}
+
+localStorage.setItem("password", newpass);
+
+
+document.body.style.opacity = "0.5";
+
+setTimeout(()=>{
+alert("Password reset successfully ✅");
+window.location.href = "index.html";
+},1000);
+
+}
+
+function backLogin(){
+window.location.href = "gate.html";
+}
+
+</script>
+
+</body>
+</html>
